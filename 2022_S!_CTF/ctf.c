@@ -58,8 +58,6 @@ int main(int argc, char *argv[]) {
     printf("What kind of bird do you like? >> ");
     read(0, &buf, 0x84);
     printf("Oh you like this bird!! >> %s", &buf);
-    
-    gets(buf);
-
+    read(0, &buf, 0x100);
     return 0;
 }
