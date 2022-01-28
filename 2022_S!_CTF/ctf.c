@@ -52,6 +52,7 @@ void gift(){
 
 int main(int argc, char *argv[]) {
     char buf[0x80] = {};
+    
     initialize();
     happy();
     Two_Thousand_Twenty_Two();
