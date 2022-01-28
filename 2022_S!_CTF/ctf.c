@@ -59,6 +59,7 @@ int main(int argc, char *argv[]) {
     read(0, &buf, 0x84);
     printf("Oh you like this bird!! >> %s", &buf);
     read(0, &buf, 0x100);
-    
+
+
     return 0;
 }
