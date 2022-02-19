@@ -89,5 +89,6 @@ void show_flag(void)
     printf("flag[%d] is %c\n", idx, flag[idx]);
     memset(flag, 0, sizeof(flag));
 
+
     return;
 }
