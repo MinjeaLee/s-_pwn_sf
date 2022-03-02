@@ -1,7 +1,3 @@
-from pwn import *
-
-pay = b""
-pay += b"A" * 24
-pay += p8(2)
-
-print(pay)
+# make func sum two nums
+def sum(a, b):
+    return a + b
