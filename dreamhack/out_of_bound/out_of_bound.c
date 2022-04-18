@@ -10,7 +10,9 @@ char *command[10] = { "cat",
     "ls",
     "id",
     "ps",
-    "file ./oob" };
+    "file ./oob" 
+};
+
 void alarm_handler()
 {
     puts("TIME OUT");
