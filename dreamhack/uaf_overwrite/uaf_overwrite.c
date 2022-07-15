@@ -8,7 +8,7 @@
 struct Human {
   char name[16];
   int weight;
-  long age;
+  long age;       // f_pointer overwrite
 };
 
 struct Robot {

